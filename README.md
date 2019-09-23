@@ -19,7 +19,7 @@ Since we will be editing HTML, you will want to have an integrated development e
 
 Each lesson contains how-to exercises and foundational information to help you implement the Experience Cloud and understand its value. Callouts are provided to highlight information which might be useful to customers migrating from our older tag manager - Dynamic Tag Management. Demo sites are provided for you to complete the tutorial, so you can learn the underlying techniques in a safe environment. After completing this tutorial, you should be ready to start implementing all of your marketing solutions through Launch on your own website.
 
-## Lesson 1 - Create a Launch Property
+## Lesson 1 - Create a Launch Property (#create)
 
 Objective
 In this lesson, you will create your first Launch property.
