@@ -1,11 +1,11 @@
 # Adobe Launch Lab
 
 ## Table of Contents
-1. [Setting Up the Environment](#setup)
+1. [Setting Up the Environment](#setup-up-the-environment)
 2. [Overview](#overview)
 3. [Create Property](#create)
 
-[Setting Up the Environment](#setup)
+## Setting Up the Environment
 
 In order to work with Launch and learn the basics of Tag Management and creating a data layer we first need a site to work with.  We will be using a couple sample websites that can be cloned in this repository.
 
@@ -15,7 +15,7 @@ Within this repository, you should find two directories, [/victory](https://gith
 
 Since we will be editing HTML, you will want to have an integrated development environment (IDE) installed on your computer.  I use Visual Studio Code which you can find [here](https://code.visualstudio.com/). 
 
-[Overview](#overview)
+## Overview
 
 Each lesson contains how-to exercises and foundational information to help you implement the Experience Cloud and understand its value. Callouts are provided to highlight information which might be useful to customers migrating from our older tag manager - Dynamic Tag Management. Demo sites are provided for you to complete the tutorial, so you can learn the underlying techniques in a safe environment. After completing this tutorial, you should be ready to start implementing all of your marketing solutions through Launch on your own website.
 
