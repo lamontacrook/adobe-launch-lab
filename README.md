@@ -53,7 +53,10 @@ A datalayer can be anything.  It could be surface within HTML or within a JavaSc
 ```
 2. Start the Web Server for Chrome and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server")
 
-3. Browse to http://127.0.0.1:8887 in your chrome browser. You should see 
+3. Browse to http://127.0.0.1:8887 in your chrome browser. You should see the home page. 
+
+![Victory Home Page](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/home_page.png "Victory Home Page")
+
 
 #### Resources:
 * https://theblog.adobe.com/data-layers-buzzword-best-practice/
