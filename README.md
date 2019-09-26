@@ -27,7 +27,25 @@ In this lesson, you will learn some best practice for developing a data layer.
 
 A datalayer can be anything.  It could be surface within HTML or within a JavaScript object.  The latter is the broadly accepted method for creating a data layer.  The W3C has published a standard for building a datalayer.  We will be using that for our exercise.  It is strongly advised to have a corporate standard.  
 
-1. Copy the code block below.  We will be using this within our environment.
+1. Start the Web Server for Chrome and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server")
+
+2. Browse to http://127.0.0.1:8887 in your chrome browser. You should see the home page. 
+
+![Victory Home Page](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/home_page.png "Victory Home Page")
+
+3. Using your chosen editor let's open the home page to edit.  If you are using Visual Studio Code, you can clone all of the content on github from within the editor.  Simple begin by opening the editor, and clicking on the command palette in the lower left-hand corner.  And, from the drop down at the top of the screen choose or type in Git:Clone.
+
+![Visual Studio Code](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/gitclone.png "Visual Studio Code")
+
+4. The will provide you with a prompt for the URL to the repository.  You will be able to find this on by scrolling up on this page.  Toward the top of the page you will see a green button that says "Clone or download".  Click on this and you will see a modal with the repository URL copy that and put it into the prompt within Visual Studio Code.
+
+![Repository](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/repo.png "Repository")
+
+5. [Need to validate remaining steps...  ] https://code.visualstudio.com/docs/editor/versioncontrol
+
+6. You should now have a project on the left hand side with all the assets for this exercise.
+
+7. Once you have all the assets, open the victory folder and index.html.  This will open the page in an HTML editor. Copy the code block below.  We will be using this to begin to build our data layer.
 
 ```
 <script type="text/javascript">
@@ -51,12 +69,7 @@ A datalayer can be anything.  It could be surface within HTML or within a JavaSc
     };
 </script>
 ```
-2. Start the Web Server for Chrome and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server")
-
-3. Browse to http://127.0.0.1:8887 in your chrome browser. You should see the home page. 
-
-![Victory Home Page](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/home_page.png "Victory Home Page")
-
+8. This data layer is an inline JavaScript object.  In-line javascript can be included anywhere on this page.  This code snippet not only set elements but it also instantiates the object, so it will be important to have this as high on the page as possible.  Let's put this code just above the closing </head> tag.
 
 #### Resources:
 * https://theblog.adobe.com/data-layers-buzzword-best-practice/
