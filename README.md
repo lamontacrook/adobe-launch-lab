@@ -72,6 +72,14 @@ A datalayer can be anything.  It could be surface within HTML or within a JavaSc
 ```
 8. This data layer is an inline JavaScript object.  In-line javascript can be included anywhere on this page.  This code snippet not only set elements but it also instantiates the object, so it will be important to have this as high on the page as possible.  Let's put this code just above the closing `</head>` tag.
 
+9. Once you have pasted the data layer, you can begin by replacing the values with meaningful data.  For instance, for pageID: "[Friendly Page Name for Reporting]" let's update to reflect the actual name of the page.  Something like pageID: "Home Page" would work for this page.  Feel free update the other values as well.
+
+10. Once you have completed this, let's move back to Chrome and to our Victory site.  Let's do a hard refresh of the page and open the Chrome Developer Tools.  In the developer tools, navigate to the Console section and type in the name of our datalayer object "digitalData". This will print out the javascript object that is in memory on the page.  You should see the same values that you created when tagging the page.
+
+![Dev Tools](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/dev_tools.png "Dev Tools")
+
+11. As time allows please feel free to tag other pages using the same method.
+
 #### Resources:
 * https://theblog.adobe.com/data-layers-buzzword-best-practice/
 * https://www.w3.org/2013/12/ceddl-201312
