@@ -3,6 +3,7 @@
 ## Table of Contents
 1. [Setting Up the Environment](#setup-up-the-environment)
 2. [Overview](#overview)
+4. [Develop a Data Layer](#develop-a-data-layer)
 3. [Create a Launch Property](#create-a-launch-property)
 
 ## Setting Up the Environment
@@ -21,7 +22,7 @@ For debugging purposes, let's  install two tools.  First, ensure that you have C
 
 Each lesson contains how-to exercises and foundational information to help you implement the Experience Cloud and understand its value. Callouts are provided to highlight information which might be useful to customers migrating from our older tag manager - Dynamic Tag Management. Demo sites are provided for you to complete the tutorial, so you can learn the underlying techniques in a safe environment. After completing this tutorial, you should be ready to start implementing all of your marketing solutions through Launch on your own website.
 
-## Develop a data layer
+## Develop a Data Layer
 Objective
 In this lesson, you will learn some best practice for developing a data layer.
 
