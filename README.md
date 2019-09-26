@@ -26,32 +26,38 @@ Objective
 In this lesson, you will learn some best practice for developing a data layer.
 
 A datalayer can be anything.  It could be surface within HTML or within a JavaScript object.  The latter is the broadly accepted method for creating a data layer.  The W3C has published a standard for building a datalayer.  We will be using that for our exercise.  It is strongly advised to have a corporate standard.  
-```
-    <script type="text/javascript">
-        var digitalData = {
-            pageInstanceID: "MyHomePage-Production",
-            page:{
-                pageInfo: {
-                    pageID: "Home Page",
-                    destinationURL: "http://mysite.com/index.html"
-                },
-                category:{
-                    primaryCategory: "FAQ Pages",
-                    subCategory1: "ProductInfo",
-                    pageType: "FAQ"
-                },
-                attributes:{
-                    country: "US",
-                    language: "en-US"
-                }
-            }
-        };
-    </script>
-```
 
-### Resources:
-https://theblog.adobe.com/data-layers-buzzword-best-practice/
-https://www.w3.org/2013/12/ceddl-201312
+1. Copy the code block below.  We will be using this within our environment.
+
+```
+<script type="text/javascript">
+    var digitalData = {
+        pageInstanceID: "[Unique ID Include Environement]",
+        page:{
+            pageInfo: {
+                pageID: "[Friendly Page Name for Reporting]",
+                destinationURL: "[URL]"
+            },
+            category:{
+                primaryCategory: "[Category]",
+                subCategory1: "[Sub-Category]",
+                pageType: "[Type of Page]"
+            },
+            attributes:{
+                country: "[Country Code]",
+                language: "[Localization]"
+            }
+        }
+    };
+</script>
+```
+2. Start the Web Server for Chrome and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server")
+
+3. Browse to http://127.0.0.1:8887 in your chrome browser. You should see 
+
+#### Resources:
+* https://theblog.adobe.com/data-layers-buzzword-best-practice/
+* https://www.w3.org/2013/12/ceddl-201312
 
 ## Create a Launch Property
 
