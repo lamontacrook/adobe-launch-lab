@@ -69,7 +69,7 @@ A datalayer can be anything.  It could be surface within HTML or within a JavaSc
     };
 </script>
 ```
-8. This data layer is an inline JavaScript object.  In-line javascript can be included anywhere on this page.  This code snippet not only set elements but it also instantiates the object, so it will be important to have this as high on the page as possible.  Let's put this code just above the closing </head> tag.
+8. This data layer is an inline JavaScript object.  In-line javascript can be included anywhere on this page.  This code snippet not only set elements but it also instantiates the object, so it will be important to have this as high on the page as possible.  Let's put this code just above the closing `</head>` tag.
 
 #### Resources:
 * https://theblog.adobe.com/data-layers-buzzword-best-practice/
