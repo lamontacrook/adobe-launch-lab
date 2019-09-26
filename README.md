@@ -8,6 +8,11 @@
 
 ## Setting Up the Environment
 
+At the end of this lesson, you will:
+* Install Chrome Developer Tools
+* Install Adobe Experience Cloud Debugger
+* Choose a development editor for this lab
+
 In order to work with Launch and learn the basics of Tag Management and creating a data layer we first need a site to work with.  We will be using a couple sample websites that can be cloned in this repository.
 
 You will also need a webserver to run the websites on.  For Launch to work you need a properly formed URL.  If you don't have a local webserver running on your machine I would recommend this [Chrome extension](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).  This will allow you to browse to these local websites using your browser.  You can certainly use whatever webserver you would like as long as you can edit and change the HTML of the files.
@@ -25,6 +30,11 @@ Each lesson contains how-to exercises and foundational information to help you i
 ## Develop a Data Layer
 Objective
 In this lesson, you will learn some best practice for developing a data layer.
+
+At the end of this lesson, you will be able to:
+* Work with a data layer in javascript
+* Clone this repository in Visual Studio Code
+* Debug the data layer in the Chrome developer tools
 
 A datalayer can be anything.  It could be surface within HTML or within a JavaScript object.  The latter is the broadly accepted method for creating a data layer.  The W3C has published a standard for building a datalayer.  We will be using that for our exercise.  It is strongly advised to have a corporate standard.  
 
