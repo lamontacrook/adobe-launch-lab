@@ -270,7 +270,7 @@ A common use of extensions is to create integrations with other applications. In
 1. From a property's overview page, open the Extensions tab.
 2. Select an extension.
 
-![Extensions](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image11 "Extensions")
+![Extensions](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image11.png "Extensions")
 
 3. If the extension exists, select it from the extensions catalog.
 4. Mouse over an extension in your list to configure or disable it.
