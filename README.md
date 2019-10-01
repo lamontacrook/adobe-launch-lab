@@ -2,10 +2,10 @@
 
 ## Table of Contents
 1. [Setting Up the Environment](#setup-up-the-environment)
-2. [Overview](#overview)
+2. [Lesson Overview](#overview)
 4. [Develop a Data Layer](#develop-a-data-layer)
 3. [Create a Launch Property](#create-a-launch-property)
-4. [Setup Environments](#setup-environments)
+4. [Setup Launch Publishing Environments](#setup-environments)
 5. [Implement the embed code](#implement-the-embed-code)
 6. [Data Elements and Rules](#data-elements-and-rules)
 7. [Create Data Element](#create-data-element)
@@ -16,23 +16,23 @@
 ## Setting Up the Environment
 
 At the end of this lesson, you will:
+* Have a locally-running web server
 * Install Chrome Developer Tools
 * Install Adobe Experience Cloud Debugger
 * Choose a development editor for this lab
 
-In order to work with Launch and learn the basics of Tag Management and creating a data layer we first need a site to work with.  We will be using a couple sample websites that can be cloned in this repository.
+In order to work with Adobe, Launch and learn the basics of Tag Management and creating a data layer we first need a site to work with.  We will be using a couple of sample websites that can be cloned in this repository.
 
-You will also need a webserver to run the websites on.  For Launch to work you need a properly formed URL.  If you don't have a local webserver running on your machine I would recommend this [Chrome extension](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).  This will allow you to browse to these local websites using your browser.  You can certainly use whatever webserver you would like as long as you can edit and change the HTML of the files.
+You will also need a webserver to run the websites on either remote or locally (such as through IIS or Apache).  If you don't have a local webserver running on your machine I would recommend this [Chrome extension](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).  This will allow you to browse to these local websites using your browser.  You can certainly use whatever webserver you would like as long as you can edit and change the HTML of the files.
 
-Within this repository, you should find two directories, [/victory](https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory) and [/apex-app](https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory/apex-app).  These directories are the websites that we will be tagging.  If you are using [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) you will need to select these directories as we go through the labs.
+Within this  repository, you should find two directories, [/victory](victory] (https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory) and [/apex-app](https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory/apex-app).  These directories are the sample websites that we will be tagging.  If you are using [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) you will need to select these directories as we go through the labs.
 
-Since we will be editing HTML, you will want to have an integrated development environment (IDE) installed on your computer.  I use Visual Studio Code which you can find [here](https://code.visualstudio.com/). 
+Since we will be editing HTML, you will want to have an integrated development environment (IDE) installed on your computer.  I use Visual Studio Code which you can find [here](https://code.visualstudio.com/). Other options include [NotePad++](https://notepad-plus-plus.org/downloads/) or [Eclipse](https://www.eclipse.org/downloads/).
+For debugging purposes, we will install two tools.  First, ensure that you have Chrome developer tools installed - https://developers.google.com/web/tools/chrome-devtools.  Additionally, install the Experience Cloud debugger - https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj?hl=en.  We will be using this to debug the Experience Cloud products.
 
-For debugging purposes, let's  install two tools.  First, ensure that you have Chrome developer tools installed - https://developers.google.com/web/tools/chrome-devtools.  Additonally, install the Experience Cloud debugger - https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj?hl=en.  We will be using this to debug the Experience Cloud products.
+## Lesson Overview
 
-## Overview
-
-Each lesson contains how-to exercises and foundational information to help you implement the Experience Cloud and understand its value. Callouts are provided to highlight information which might be useful to customers migrating from our older tag manager - Dynamic Tag Management. Demo sites are provided for you to complete the tutorial, so you can learn the underlying techniques in a safe environment. After completing this tutorial, you should be ready to start implementing all of your marketing solutions through Launch on your own website.
+Each lesson contains how-to exercises and foundational information to help you implement the Adobe Experience Cloud and understand its value. Callouts are provided to highlight information which might be useful to customers migrating from our older tag manager - Dynamic Tag Manager (DTM). Demo sites are provided for you to complete the tutorial, so you can learn the underlying techniques in a safe environment. After completing this tutorial, you should be ready to start implementing all of your marketing solutions through Launch on your own website.
 
 ## Develop a Data Layer
 
@@ -40,19 +40,31 @@ __Objective__
 In this lesson, you will learn some best practice for developing a data layer.
 
 At the end of this lesson, you will be able to:
-* Work with a data layer in javascript
+* Understand what a data layer is and how it can be used
+* Work with a data layer in JavaScript
 * Clone this repository in Visual Studio Code
 * Debug the data layer in the Chrome developer tools
 
-A datalayer can be anything.  It could be surface within HTML or within a JavaScript object.  The latter is the broadly accepted method for creating a data layer.  The W3C has published a standard for building a datalayer.  We will be using that for our exercise.  It is strongly advised to have a corporate standard.  
+## Develop a Data Layer
 
-1. Start the Web Server for Chrome and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server")
+__Objective__
+In this lesson, you will learn some best practice for developing a data layer.
 
-2. Browse to http://127.0.0.1:8887 in your chrome browser. You should see the home page. 
+At the end of this lesson, you will be able to:
+* Understand what a data layer is and how it can be used
+* Work with a data layer in JavaScript
+* Clone this repository in Visual Studio Code
+* Debug the data layer in the Chrome developer tools
+
+A data layer can be anything.  It could be surfaced within HTML or within a JavaScript object.  The latter is the broadly accepted method for creating a data layer.  The W3C has [published a standard]( https://www.w3.org/2013/12/ceddl-201312.pdf) for building a data layer.  We will be using that standard for our exercise.  It is strongly advised to have a corporate standard.  
+
+1. Start the Web Server for Chrome  and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server") If you are using another environment…
+
+2. Browse to http://127.0.0.1:8887 in your Chrome browser or the address of your local machine or webserver. You should see the home page. 
 
 ![Victory Home Page](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/home_page.png "Victory Home Page")
 
-3. Using your chosen editor let's open the home page to edit.  If you are using Visual Studio Code, you can clone all of the content on github from within the editor.  Simple begin by opening the editor, and clicking on the command palette in the lower left-hand corner.  And, from the drop down at the top of the screen choose or type in Git:Clone.
+3. Using your chosen editor, open the home page to edit.  If you are using Visual Studio Code, you can clone all the content on GitHub from within the editor.  Begin by opening the editor, and clicking on the command palette in the lower left-hand corner.  And, from the drop down at the top of the screen choose or type in Git:Clone.
 
 ![Visual Studio Code](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/gitclone.png "Visual Studio Code")
 
@@ -62,14 +74,14 @@ A datalayer can be anything.  It could be surface within HTML or within a JavaSc
 
 5. [Need to validate remaining steps...  ] https://code.visualstudio.com/docs/editor/versioncontrol
 
-6. You should now have a project on the left hand side with all the assets for this exercise.
+6. You should now have a project on the left-hand side with all the assets for this exercise.
 
 7. Once you have all the assets, open the victory folder and index.html.  This will open the page in an HTML editor. Copy the code block below.  We will be using this to begin to build our data layer.
 
 ```
 <script type="text/javascript">
     var digitalData = {
-        pageInstanceID: "[Unique ID Include Environement]",
+        pageInstanceID: "[Unique ID Include Environment]",
         page:{
             pageInfo: {
                 pageID: "[Friendly Page Name for Reporting]",
@@ -88,13 +100,13 @@ A datalayer can be anything.  It could be surface within HTML or within a JavaSc
     };
 </script>
 ```
-8. This data layer is an inline JavaScript object.  In-line javascript can be included anywhere on this page.  This code snippet not only set elements but it also instantiates the object, so it will be important to have this as high on the page as possible.  Let's put this code just above the closing `</head>` tag.
+8. This data layer is an inline JavaScript object.  In-line JavaScript can be included anywhere on this page.  This code snippet not only sets elements, but it also instantiates the data layer object (`digitalData`), so it will be important to have this as high on the page as possible.  Put this code just above the closing `</head>` tag.
 
-9. Once you have pasted the data layer, you can begin by replacing the values with meaningful data.  For instance, for pageID: "[Friendly Page Name for Reporting]" let's update to reflect the actual name of the page.  Something like pageID: "Home Page" would work for this page.  Feel free update the other values as well.
+9. Once you have pasted the data layer, you can begin by replacing the placeholder values with meaningful data.  For instance, for pageID: "[Friendly Page Name for Reporting]" let's update to reflect the actual name of the page.  Something like pageID: "Home Page" would work for this page.  Feel free update the other values as well.
 
-10. Once you have completed this, let's move back to Chrome and to our Victory site.  Let's do a hard refresh of the page and open the Chrome Developer Tools.  In the developer tools, navigate to the Console section and type in the name of our datalayer object "digitalData". This will print out the javascript object that is in memory on the page.  You should see the same values that you created when tagging the page.
+10. Once you have completed this, let's move back to Chrome and to our Victory site.  Let's dDo a hard refresh of the page by hitting F5 or ctrl+refresh button  and open the Chrome Developer Tools by hitting F12 or….  In the developer tools, navigate to the Console section and type in the name of our data layer object "`digitalData"`. This will print out the JavaScript object that is part of the DOM on the page.  You should see the same values that you created when tagging the page.
 
-![Dev Tools](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/dev_tools.png "Dev Tools")
+![Dev Tools](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/dev_tools.png "Dev Tools")  
 
 11. As time allows please feel free to tag other pages using the same method.
 
