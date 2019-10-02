@@ -294,6 +294,78 @@ The Core extension is the starting point for your new extension. The default ext
 3. Default JavaScript
 These defaults are the basis for the custom rules you'll build to create your extension.
 
+## Add the Analytics Extension
+
+The Analytics extension consists of two main parts:
+
+* The extension configuration, which manages the core AppMeasurement.js library settings and can set global variables
+* Rule actions to do the following:
+    * Set Variables
+    * Clear Variables
+    * Send the Analytics Beacon
+
+1. Go to __Extensions > Catalog__ and locate the Adobe Analytics extension.
+2. Click __Install__.
+3. Under __Library Management > Report Suites__, enter the report suite IDs you want to use with each Launch environment.
+
+In this lab, you can use one report suite for all environments, but in production you would want to use separate report suites, as shown in the image below:
+
+![Report Suite Configuration](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image12.png "Report Suite Configuration")
+
+__Note:__ Use the Manage the library for me option as the Library Management setting. This makes it much easier to keep the core AppMeasurement.js code up-to-date.
+
+4. Under __General > Tracking Server__, enter your tracking server (for example, tmd.sc.omtrdc.net).  Enter your SSL Tracking Server if your site supports https://.
+
+![SSL](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image13 "SSL")
+
+5. In the Global Variables section, set the Page Name variable using your Page Name data element, then click the __Data Element__ icon to open the modal and choose the page Page Name data element.
+6. Click __Save to Library and Build__.
+
+__Note:__ Global variables can be set in the extension configuration or in rule actions. Be aware that when setting variables with the extension configuration, the data layer must be defined before the Launch embed codes.
+
+## Create a Rule
+
+Next, use the data element you created in a simple rule. Rules are one of the most powerful features in Launch. They tell specifically what happens when a visitor interacts with your website. When the criteria outlined in your rules are met, the rule triggers the specified action.
+
+Use the following steps to create a rule that outputs the Page Name data element value to the browser console.
+
+1. In the top navigation, click __Rules__. Because you haven’t created any rules yet in this property, a brief video appears with additional information on the topic. Watch this video, if you like.
+2. Click __Create New Rule__.
+3. Click the Create New Rule button​
+
+![Create Rule](/images/L780_image15) "Create Rule")
+
+3. Name the Rule (for example, "All Pages - Library Loaded"). This name uses a convention that indicates where and when the rule will fire, which makes it easier to identify and reuse as your Launch property matures.
+4. Under Events, click __Add__.
+
+Name the Rule and Add an event​
+
+The Event tells Launch when the rule should fire and can be many things, including a page load, a click, a custom JavaScript event, and so on.
+
+As the Event Type, select Library Loaded (Page Top). When you select the Event Type, Launch pre-populates a name for the event using your selection. The default order for the event is 50. Ordering is a powerful feature in Launch that gives you precise control over the sequence of actions when multiple rules are triggered by the same event. This feature is used later in the tutorial.
+
+Click Keep Changes.
+
+Select an Event​
+
+To fire this rule on all pages, leave Conditions blank. If you open the Conditions modal, you will see that conditions can add both restrictions and exclusions based on a large variety of options, including URLs, data element values, date ranges, and more.
+
+As the Action Type, select custom code. At this point, this is the only option. Later in the tutorial, as you add extensions, more options will become available.
+
+Select Open Editor, then add the following to the code window:console.log('The page name is '+_satellite.getVar('Page Name'));
+
+​Select an Action​
+
+Enter custom code​
+
+Save the code window.
+
+On the Action configuration screen, click Keep Changes.
+
+Save the rule.
+
+
+
 [NEED TO USE CONTEXT HUB EXTENSION]
 
 
