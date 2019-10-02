@@ -338,33 +338,72 @@ Use the following steps to create a rule that outputs the Page Name data element
 3. Name the Rule (for example, "All Pages - Library Loaded"). This name uses a convention that indicates where and when the rule will fire, which makes it easier to identify and reuse as your Launch property matures.
 4. Under Events, click __Add__.
 
-Name the Rule and Add an event​
+![Add Rule](/images/L780_image16.png) "Add Rule")
 
 The Event tells Launch when the rule should fire and can be many things, including a page load, a click, a custom JavaScript event, and so on.
 
-As the Event Type, select Library Loaded (Page Top). When you select the Event Type, Launch pre-populates a name for the event using your selection. The default order for the event is 50. Ordering is a powerful feature in Launch that gives you precise control over the sequence of actions when multiple rules are triggered by the same event. This feature is used later in the tutorial.
+5. As the Event Type, select __Library Loaded (Page Top)__. When you select the Event Type, Launch pre-populates a name for the event using your selection. The default order for the event is 50. Ordering is a powerful feature in Launch that gives you precise control over the sequence of actions when multiple rules are triggered by the same event. This feature is used later in the tutorial.
+6. Click __Keep Changes__.
 
-Click Keep Changes.
+![Keep Changes](/images/L780_image17.png) "Keep Changes")
 
-Select an Event​
+7. To fire this rule on all pages, leave __Conditions__ blank. If you open the Conditions modal, you will see that conditions can add both restrictions and exclusions based on a large variety of options, including URLs, data element values, date ranges, and more.
+8. As the Action Type, select __custom code__. At this point, this is the only option. Later in the tutorial, as you add extensions, more options will become available.
 
-To fire this rule on all pages, leave Conditions blank. If you open the Conditions modal, you will see that conditions can add both restrictions and exclusions based on a large variety of options, including URLs, data element values, date ranges, and more.
+Select __Open Editor__, then add the following to the code window:console.log('The page name is '+_satellite.getVar('Page Name'));
 
-As the Action Type, select custom code. At this point, this is the only option. Later in the tutorial, as you add extensions, more options will become available.
+​![Select an Action]("/images/L780_image18.png")
+​
+![Enter custom code}("/images/L780_image19.png")​
 
-Select Open Editor, then add the following to the code window:console.log('The page name is '+_satellite.getVar('Page Name'));
+10. Save the code window.
+11. On the Action configuration screen, click __Keep Changes__.
+12. Save the rule.
 
-​Select an Action​
+### Note for DTM Migrators
+In Launch, rules are required in order to fire most marketing pixels. For example, in order to fire the Adobe Analytics Beacon, we must use a Rule to instruct Launch to do so.The Rule builder has been dramatically redesigned and rebuilt in Launch. Some of the main changes are:
 
-Enter custom code​
+* There is just one Rule builder. DTM rule-types like "Page Bottom", "Click", and "Direct Call" are all just event-types in the Rule builder. This makes it much easier to update a rule should you need to change the trigger from, say, a DOM Ready event to a custom event.
+* There is a new "Custom Code" event-type
+* Extensions can add new event types to the Rule builder. For example, the Target extension could eventually add built-in support for its at.js custom events, so custom code wouldn't be needed to use this feature.
+* Extensions can add new actions to the Rule builder, reducing issues by deprecating reliance on custom code. You will be using many of these extension actions in this Tutorial.
+* Rules are required to fire requests associated with most marketing tools. This will require a mindset adjustment, especially for things like setting Customer IDs, firing Analytics beacons, and firing the global mbox.
 
-Save the code window.
+## Publishing Workflow
+After you have implemented some key solutions of the Adobe Experience Cloud in your Development environment, it's time to learn the publishing workflow.
 
-On the Action configuration screen, click Keep Changes.
+__Objectives__
+At the end of this tutorial, you will be able to:
+* Publish a Development library to the Staging environment
+* Map a Staging library to your production website using the Debugger
+* Publish a Staging library to the Production environment
 
-Save the rule.
+### Save the rule to a library
+After configuring a collection of extensions, data elements, and rules in the Launch interface, you need to package these capabilities and logic into a set of JavaScript code that you can deploy on your website so marketing tags fire when visitors come to the site. A library is the set of JavaScript code that does this.
 
+In an earlier lesson, you implemented the embed code of your development environment on the sample page. When you loaded the sample page a 404 error was returned for the embed code URL because a Launch library had not been built yet and assigned to the environment. In this tutorial, you will put your new data element and rule in a library so that your sample page can do something.
 
+1. Go to the Publishing tab and click Add New Library.
+
+![Add New Library]("/images/L780_image20.png")​
+
+2. Name the library "Initial Setup."
+3. Select __Environment > Development_.
+4. Click __Add All Changed Resources_. Launch summarizes the changes you just made.
+5. Click __Save & Build for Development__
+
+![21]("/images/L780_image21.png")
+
+After a few moments, the status turns green, indicating the library built successfully.
+
+![22]("/images/L780_image22.png")
+
+### Validate your rule
+To validate that your rule is working as expected, reload your sample page. If you look at the Developer Tools > Network tab, you should see a 200 response for your Launch Library.
+
+![23]("/images/L780_image23.png")
+
+You have created your first data element and rule, and built your first Launch library.
 
 [NEED TO USE CONTEXT HUB EXTENSION]
 
