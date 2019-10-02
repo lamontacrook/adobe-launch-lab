@@ -333,7 +333,7 @@ Use the following steps to create a rule that outputs the Page Name data element
 2. Click __Create New Rule__.
 3. Click the Create New Rule button​
 
-![Create Rule](/images/L780_image15) "Create Rule")
+![Create Rule](/images/L780_image15.png) "Create Rule")
 
 3. Name the Rule (for example, "All Pages - Library Loaded"). This name uses a convention that indicates where and when the rule will fire, which makes it easier to identify and reuse as your Launch property matures.
 4. Under Events, click __Add__.
