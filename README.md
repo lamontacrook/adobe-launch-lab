@@ -358,7 +358,7 @@ Select __Open Editor__, then add the following to the code window:console.log('T
 
 ​![Select an Action](/images/L780_image18.png)
 ​
-![Enter custom code]("/images/L780_image19.png")​
+![Enter custom code](/images/L780_image19.png)​
 
 10. Save the code window.
 11. On the Action configuration screen, click __Keep Changes__.
