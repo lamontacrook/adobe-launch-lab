@@ -320,7 +320,7 @@ __Note:__ Use the Manage the library for me option as the Library Management set
 
 4. Under __General > Tracking Server__, enter your tracking server (for example, tmd.sc.omtrdc.net).  Enter your SSL Tracking Server if your site supports https://.
 
-![SSL](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image13.png "SSL")
+![SSL](/images/L780_image13.png "SSL")
 
 5. In the Global Variables section, set the Page Name variable using your Page Name data element, then click the __Data Element__ icon to open the modal and choose the page Page Name data element.
 6. Click __Save to Library and Build__.
