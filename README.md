@@ -356,7 +356,7 @@ The Event tells Launch when the rule should fire and can be many things, includi
 
 Select __Open Editor__, then add the following to the code window:console.log('The page name is '+_satellite.getVar('Page Name'));
 
-​![Select an Action]("/images/L780_image18.png")
+​![Select an Action](/images/L780_image18.png)
 ​
 ![Enter custom code]("/images/L780_image19.png")​
 
