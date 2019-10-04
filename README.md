@@ -320,7 +320,7 @@ __Note:__ Use the Manage the library for me option as the Library Management set
 
 4. Under __General > Tracking Server__, enter your tracking server (for example, tmd.sc.omtrdc.net).  Enter your SSL Tracking Server if your site supports https://.
 
-![SSL]("https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image13.png" "SSL")
+![SSL](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image13.png "SSL")
 
 5. In the Global Variables section, set the Page Name variable using your Page Name data element, then click the __Data Element__ icon to open the modal and choose the page Page Name data element.
 6. Click __Save to Library and Build__.
@@ -337,19 +337,19 @@ Use the following steps to create a rule that outputs the Page Name data element
 2. Click __Create New Rule__.
 3. Click the Create New Rule button​
 
-![Create Rule](/images/L780_image15.png) "Create Rule")
+![Create Rule](/images/L780_image15.png "Create Rule")
 
 3. Name the Rule (for example, "All Pages - Library Loaded"). This name uses a convention that indicates where and when the rule will fire, which makes it easier to identify and reuse as your Launch property matures.
 4. Under Events, click __Add__.
 
-![Add Rule](/images/L780_image16.png) "Add Rule")
+![Add Rule](/images/L780_image16.png "Add Rule")
 
 The Event tells Launch when the rule should fire and can be many things, including a page load, a click, a custom JavaScript event, and so on.
 
 5. As the Event Type, select __Library Loaded (Page Top)__. When you select the Event Type, Launch pre-populates a name for the event using your selection. The default order for the event is 50. Ordering is a powerful feature in Launch that gives you precise control over the sequence of actions when multiple rules are triggered by the same event. This feature is used later in the tutorial.
 6. Click __Keep Changes__.
 
-![Keep Changes](/images/L780_image17.png) "Keep Changes")
+![Keep Changes](/images/L780_image17.png "Keep Changes")
 
 7. To fire this rule on all pages, leave __Conditions__ blank. If you open the Conditions modal, you will see that conditions can add both restrictions and exclusions based on a large variety of options, including URLs, data element values, date ranges, and more.
 8. As the Action Type, select __custom code__. At this point, this is the only option. Later in the tutorial, as you add extensions, more options will become available.
