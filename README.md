@@ -449,6 +449,14 @@ At the end of this tutorial, you will be able to:
 * Create a schema from a data layer
 * Use that schema in a data element
 
+1. Go to __Extensions > Catalog__ and locate the Context Hub extension.
+2. Click __Install__.
+3. Click __Configure__ on the Context Hub Extension.
+
+![Context Hub](/images/contexthub1.png)
+
+![Context Hub](/images/contexthub2.png)
+
 
 
 
