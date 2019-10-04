@@ -11,6 +11,10 @@
 7. [Create Data Element](#create-data-element)
 8. [Extensions](#extensions)
 9. [Add a new extension](#add-new-extension)
+10. [Add the Analytics Extension](#add-the-analytics-extension)
+11. [Create a Rule](#create-a-rule)
+12. [Publishing Workflow](#publishing-workflow)
+13. [Install Context Hub](#install-context-hub)
 
 
 ## Setting Up the Environment
@@ -316,7 +320,7 @@ __Note:__ Use the Manage the library for me option as the Library Management set
 
 4. Under __General > Tracking Server__, enter your tracking server (for example, tmd.sc.omtrdc.net).  Enter your SSL Tracking Server if your site supports https://.
 
-![SSL](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image13 "SSL")
+![SSL]("https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image13" "SSL")
 
 5. In the Global Variables section, set the Page Name variable using your Page Name data element, then click the __Data Element__ icon to open the modal and choose the page Page Name data element.
 6. Click __Save to Library and Build__.
@@ -354,7 +358,7 @@ Select __Open Editor__, then add the following to the code window:console.log('T
 
 ​![Select an Action]("/images/L780_image18.png")
 ​
-![Enter custom code}("/images/L780_image19.png")​
+![Enter custom code]("/images/L780_image19.png")​
 
 10. Save the code window.
 11. On the Action configuration screen, click __Keep Changes__.
@@ -405,6 +409,46 @@ To validate that your rule is working as expected, reload your sample page. If y
 
 You have created your first data element and rule, and built your first Launch library.
 
-[NEED TO USE CONTEXT HUB EXTENSION]
+## Use the Working Library feature
+
+When you are making a lot of changes in Launch, it is inconvenient to have to open the Publishing tab, add changes, and build the library each time you want to see the result. After you have created your Initial Setup library, you can use the Working Library feature to rapidly save your changes and rebuild the library in a single step.
+
+1. Make a small change to the All Pages - Library Loaded rule.
+2. In the top navigation, click Rules and then click on the All Pages - Library Loaded rule to open it.
+
+![24]("/images/L780_images24.png")​
+
+3. On the Edit Rule page, click the Select an option dropdown to show the Working Library options. Select your Initial Setup library.
+
+![25]("/images/L780_image25.png")​
+
+After you select the library, the __Save__ button defaults to __Save to Library and Build__. When you make a change in Launch, you can use this option to automatically add the change directly to your working library and rebuild it.
+
+4. To test this feature, open your Custom Code action and add a colon after the text "The page name is" so the entire code block reads:
+
+```
+console.log('The page name is: ' + _satellite.getVar('Page Name'));
+```
+
+5. Save the code, keep the changes in the action, and click __Save to Library and Build__.
+
+![26]("/images/L780_image26.png")​
+
+6. Wait a moment until the green status reappears next to the Working Library dropdown, then reload your sample page. You should see your change reflected in the console message. (You might need to clear your browser cache and reload to see the change to the page.
+
+This is a much faster way of working. The rest of the implementation tutorials use this approach.
+
+## Install Context Hub
+
+When we originally setup our data element, we had to ensure that the same syntax created in code was repeated in the data element.  If there was a typo in either the data layer or the creation the data element the the data element would cease to work and the rule using that data element would stop functioning.  This tightly coupled setup is something that should be avoided.  
+
+The context hub was initially built to integrate Launch, Analytics and Experience Manager, however, the same functionality can be used outside of AEM.
+
+__Objective__
+At the end of this tutorial, you will be able to:
+* Create a schema from a data layer
+* Use that schema in a data element
+
+
 
 
