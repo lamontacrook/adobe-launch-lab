@@ -389,23 +389,23 @@ In an earlier lesson, you implemented the embed code of your development environ
 
 1. Go to the Publishing tab and click Add New Library.
 
-![Add New Library]("/images/L780_image20.png")​
+![Add New Library](/images/L780_image20.png)​
 
 2. Name the library "Initial Setup."
 3. Select __Environment > Development_.
 4. Click __Add All Changed Resources_. Launch summarizes the changes you just made.
 5. Click __Save & Build for Development__
 
-![21]("/images/L780_image21.png")
+![21](/images/L780_image21.png)
 
 After a few moments, the status turns green, indicating the library built successfully.
 
-![22]("/images/L780_image22.png")
+![22](/images/L780_image22.png)
 
 ### Validate your rule
 To validate that your rule is working as expected, reload your sample page. If you look at the Developer Tools > Network tab, you should see a 200 response for your Launch Library.
 
-![23]("/images/L780_image23.png")
+![23](/images/L780_image23.png)
 
 You have created your first data element and rule, and built your first Launch library.
 
@@ -416,11 +416,11 @@ When you are making a lot of changes in Launch, it is inconvenient to have to op
 1. Make a small change to the All Pages - Library Loaded rule.
 2. In the top navigation, click Rules and then click on the All Pages - Library Loaded rule to open it.
 
-![24]("/images/L780_images24.png")​
+![24](/images/L780_images24.png)​
 
 3. On the Edit Rule page, click the Select an option dropdown to show the Working Library options. Select your Initial Setup library.
 
-![25]("/images/L780_image25.png")​
+![25](/images/L780_image25.png)​
 
 After you select the library, the __Save__ button defaults to __Save to Library and Build__. When you make a change in Launch, you can use this option to automatically add the change directly to your working library and rebuild it.
 
@@ -432,7 +432,7 @@ console.log('The page name is: ' + _satellite.getVar('Page Name'));
 
 5. Save the code, keep the changes in the action, and click __Save to Library and Build__.
 
-![26]("/images/L780_image26.png")​
+![26](/images/L780_image26.png)​
 
 6. Wait a moment until the green status reappears next to the Working Library dropdown, then reload your sample page. You should see your change reflected in the console message. (You might need to clear your browser cache and reload to see the change to the page.
 
