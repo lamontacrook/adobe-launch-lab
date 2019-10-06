@@ -199,7 +199,7 @@ The embed code should be implemented in the `<head>` element of all HTML pages t
 
 Open your web browser’s developer tools and go to the Network tab. At this point, you should see a 404 error for the Launch environment URL:
 
-![404 Error](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image8 "404 Error")
+![404 Error](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image8.png "404 Error")
 
 The 404 error is expected because you haven't built a library in this Launch environment yet. You will do that in the next lesson. If you see a "failed" message instead of a 404 error, you probably forgot to add the https:// protocol in the embed code. Again, you only need to specify the https:// protocol if you are loading the sample page using the file:// protocol. Make that change and reload the page until the 404 error appears.
 
@@ -234,19 +234,27 @@ At the end of this lesson, you will be able to:
 * Use the Working Library feature to work more efficiently
 
 ## Create Data Element
+
 Data elements are Launch’s version of a data layer. They can store values from your own data layer object, cookies, local storage objects, query string parameters, page elements, meta tags, and so on.
 
 __Note:__ Data element capabilities can be extended with Extensions. For example, the ContextHub extension allows you to add data elements using features of the extension.
 
 This exercise shows how to create a data element for Page Name, which will be used later in the Target and Analytics implementations.
 
-!. In the top navigation, click Data Elements. Because you haven’t created any data elements yet in this property, a brief video appears with additional information on this topic. Watch this video, if you like.
+1. In the top navigation, click Data Elements. Because you haven’t created any data elements yet in this property, a brief video appears with additional information on this topic. Watch this video, if you like.
+
 2. Click __Create New Data Element__.
+
 3. Name the data element (for example, "Page Name").
+
 4. Use the JavaScript Variable Data Element type to point to a value in your sample page's data layer: `digitalData.page.pageInfo.pageName`.
+
 5. Use not available as the Default Value. The Default Value tells Launch what value to use for the data element if your JavaScript Variable specified above is not found.
+
 6. Check the boxes for __Force lowercase__ value and __Clean text__ to standardize the case and remove extraneous spaces.
+
 7. Leave __None__ as the __Storage Duration__ setting, because this value is typically different on every page.
+
 8. Save the data element.
 
 ## Extensions
@@ -452,11 +460,76 @@ At the end of this tutorial, you will be able to:
 1. Go to __Extensions > Catalog__ and locate the Context Hub extension.
 2. Click __Install__.
 3. Click __Configure__ on the Context Hub Extension.
+4. In the configuration section choose __Customized ContextHub Data Layer__ and enter your the root of the data layer JavaScript object.
+
+```
+window.digitalData
+``` 
 
 ![Context Hub](/images/contexthub1.png)
 
+__Note:__ This will tell the ContextHub Launch extension where within the current instance of the webpage to find the data layer object instatiated.
+
+5. Click __</> Open Editor__
+
 ![Context Hub](/images/contexthub2.png)
 
+In the editor we want to paste the schema of our data layer.  To create a schema based on a JSON object let's use [an online json-to-schema converter](https://www.liquid-technologies.com/online-json-to-schema-converter).
 
+6. Copy the data layer object below and paste it into the converter and click Generate Schema.
 
+```
+{
+    pageInstanceID: "[Unique ID Include Environment]",
+    page:{
+        pageInfo: {
+            pageID: "[Friendly Page Name for Reporting]",
+            destinationURL: "[URL]"
+        },
+        category:{
+            primaryCategory: "[Category]",
+            subCategory1: "[Sub-Category]",
+            pageType: "[Type of Page]"
+        },
+        attributes:{
+            country: "[Country Code]",
+            language: "[Localization]"
+        }
+    }
+}
+```
+
+__Note:__ The object above is the same object from the earlier exercise without the details declaring the object equal to a variable.  A schema is a description of the data and the data model.  By providing the extention with the schema we are simply telling it what data is available and how it is structured.
+
+![JSON Converter](/images/JSONConverter.png)
+
+7. Copy the newly generated schema into the extension.  Navigate back to the extension and paste schema into the extension's editor.
+
+![Schema](/images/schema.png)
+
+8. Click __Save__ and __Save to Build the Library__.
+
+### Edit Data Element
+
+1. Navigate to Data Elements and into the Page Name data element.
+
+2. Change the __Extension Type__ to __Adobe ContextHub__.
+
+3. Select __Data Element Type__ to __Context Hub__.
+
+4. Select `page.pageInfo` in __Data item__.
+
+![Edit Data Element](/images/pageName.png)
+
+5. Click __Save to Build Library__.
+
+<!--
+
+What the capabilities are???
+Trigger something??
+Browse abandon ...
+Action ...
+REACT ... 
+
+-->
 
