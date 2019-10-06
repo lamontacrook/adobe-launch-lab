@@ -62,7 +62,7 @@ At the end of this lesson, you will be able to:
 
 A data layer can be anything.  It could be surfaced within HTML or within a JavaScript object.  The latter is the broadly accepted method for creating a data layer.  The W3C has [published a standard]( https://www.w3.org/2013/12/ceddl-201312.pdf) for building a data layer.  We will be using that standard for our exercise.  It is strongly advised to have a corporate standard.  
 
-1. Start the [Web Server for Chrome] (chrome-extension://ofhbbkphhbklhfoeikjpcbhemlocgigb/app.html?598) and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server") If you are using another environment…
+1. Start the [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/related) and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server") If you are using another environment…
 
 2. Browse to http://127.0.0.1:8887 in your Chrome browser or the address of your local machine or webserver. You should see the home page. 
 
