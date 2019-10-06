@@ -29,10 +29,10 @@ In order to work with Adobe, Launch and learn the basics of Tag Management and c
 
 You will also need a webserver to run the websites on either remote or locally (such as through IIS or Apache).  If you don't have a local webserver running on your machine I would recommend this [Chrome extension](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).  This will allow you to browse to these local websites using your browser.  You can certainly use whatever webserver you would like as long as you can edit and change the HTML of the files.
 
-Within this  repository, you should find two directories, [/victory](victory] (https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory) and [/apex-app](https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory/apex-app).  These directories are the sample websites that we will be tagging.  If you are using [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) you will need to select these directories as we go through the labs.
+Within this  repository, you should find two directories, [/victory](https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory) and [/apex-app](https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory/apex-app).  These directories are the sample websites that we will be tagging.  If you are using [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) you will need to select these directories as we go through the labs.
 
 Since we will be editing HTML, you will want to have an integrated development environment (IDE) installed on your computer.  I use Visual Studio Code which you can find [here](https://code.visualstudio.com/). Other options include [NotePad++](https://notepad-plus-plus.org/downloads/) or [Eclipse](https://www.eclipse.org/downloads/).
-For debugging purposes, we will install two tools.  First, ensure that you have Chrome developer tools installed - https://developers.google.com/web/tools/chrome-devtools.  Additionally, install the Experience Cloud debugger - https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj?hl=en.  We will be using this to debug the Experience Cloud products.
+For debugging purposes, we will install two tools.  First, ensure that you have [Chrome developer tools](https://developers.google.com/web/tools/chrome-devtools) installed.  Additionally, install the [Experience Cloud Debugger](https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj?hl=en).  We will be using this to debug the Experience Cloud products.
 
 ## Lesson Overview
 
@@ -62,7 +62,7 @@ At the end of this lesson, you will be able to:
 
 A data layer can be anything.  It could be surfaced within HTML or within a JavaScript object.  The latter is the broadly accepted method for creating a data layer.  The W3C has [published a standard]( https://www.w3.org/2013/12/ceddl-201312.pdf) for building a data layer.  We will be using that standard for our exercise.  It is strongly advised to have a corporate standard.  
 
-1. Start the Web Server for Chrome  and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server") If you are using another environment…
+1. Start the [Web Server for Chrome] (chrome-extension://ofhbbkphhbklhfoeikjpcbhemlocgigb/app.html?598) and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server") If you are using another environment…
 
 2. Browse to http://127.0.0.1:8887 in your Chrome browser or the address of your local machine or webserver. You should see the home page. 
 
@@ -522,6 +522,66 @@ __Note:__ The object above is the same object from the earlier exercise without 
 ![Edit Data Element](/images/pageName.png)
 
 5. Click __Save to Build Library__.
+
+## Publish to Staging
+
+After you have created and validated your library in the Development environment, it is time to publish it to Staging.
+
+1. Go to the Publishing page.
+
+2. Open the drop down next to your library and select Submit for Approval.
+
+![28](/images/L780_image28.png)
+
+3. Click Submit. Your library appears in the Submitted column in an unbuilt state.
+
+4. Open the drop down and select Build for Staging.
+
+![29](/images/L780_image29.png)
+
+Once the green-dot icon appears, the library can be previewed in the Staging environment.
+
+In a real-life scenario, the next step in the process would typically be to have your QA team validate the changes in the Staging library. They can do this using the Debugger.
+
+## Validate the changes in the Staging library
+
+1. In your Launch property, open the Environments page.
+
+2. In the Staging row, click the __Install__ icon.
+
+![30](/images/L780_image30.png)
+
+3. Click the __Copy__ icon to copy the embed code to your clipboard, then click __Close__.
+
+![31](/images/L780_image31.png)
+
+4. Open the [our demo site](http://127.0.0.1:8887/) in your Chrome browser.
+
+5. Open the [Experience Cloud Debugger extension](https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj).
+
+![32](/images/L780_image32.png)
+
+6. Open the Tools tab and click __Adobe Launch > Dynamically Insert Launch > Embed Code__ to open the text input field (it might currently have the URL of your Development embed code):
+
+![33](/images/L780_image33.png)
+
+7. Paste the Staging embed code that is in your clipboard, then click the disk icon to save.
+
+![34](/images/L780_image34.png)
+
+8. Reload and check the Summary tab of the Debugger. Under the Launch section, you should see that your Staging Property is implemented, showing your property name (for example, "Launch Tutorial" or whatever you named your property).
+
+![35](/images/L780_image35.png)
+
+In real life, once your QA team has signed off by reviewing the changes in the Staging environment, it is time to publish to production.
+
+## Publish to Production
+
+1. Go to the Publishing page, then from the dropdown, click __Approve for Publishing__:
+
+![36](/images/L780_image36.png)
+
+
 
 <!--
 
