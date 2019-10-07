@@ -24,6 +24,7 @@ At the end of this lesson, you will:
 * Install Chrome Developer Tools
 * Install Adobe Experience Cloud Debugger
 * Choose a development editor for this lab
+* Install node.js and aio
 
 In order to work with Adobe, Launch and learn the basics of Tag Management and creating a data layer we first need a site to work with.  We will be using a couple of sample websites that can be cloned in this repository.
 
@@ -33,6 +34,14 @@ Within this  repository, you should find two directories, [/victory](https://git
 
 Since we will be editing HTML, you will want to have an integrated development environment (IDE) installed on your computer.  I use Visual Studio Code which you can find [here](https://code.visualstudio.com/). Other options include [NotePad++](https://notepad-plus-plus.org/downloads/) or [Eclipse](https://www.eclipse.org/downloads/).
 For debugging purposes, we will install two tools.  First, ensure that you have [Chrome developer tools](https://developers.google.com/web/tools/chrome-devtools) installed.  Additionally, install the [Experience Cloud Debugger](https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj?hl=en).  We will be using this to debug the Experience Cloud products.
+
+For the I/O Runtime exercise, you will need to ensure you have [node.js](https://nodejs.org/en/download/) installed and aio.  To install aio, after you have installed node.js run the following command in the terminal.  
+
+```
+npm install -g @adobe/aio-cli
+```
+
+AIO will install openwhisk.  Verify that openwhisk is in your path by typing in `wsk -h` from the terminal.  
 
 ## Lesson Overview
 

@@ -1,0 +1,85 @@
+<!--
+Copyright 2018 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Set the viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Set character encoding -->
+  <meta charset="utf-8">
+  <!-- Include manifest -->
+  <link rel="manifest" href="manifest.json">
+  <!-- Set title -->
+  <title>Push Notifications</title>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+  </style>
+
+</head>
+
+<body>
+
+  <div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+      <a href="victory/index.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Victory</a>
+      <a href="apex-app/index.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Apex App</a>
+    </div>
+  
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
+    </div>
+  </div>
+
+  <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Adobe I/O Lab</h1>
+    <p class="w3-xlarge">This page must be accessed using HTTPS or via localhost.</p>
+    <button disabled class="w3-button w3-black w3-padding-large w3-large w3-margin-top js-push-btn">Enable Push Messaging</button>
+  </header>
+
+  <div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <!--button disabled class="js-push-btn">Enable Push Messaging</button><br><br-->
+        <section class="js-sub-endpoint" style="display:none;width:80%">
+          <h3>Subscription Object:</h3>
+          <code class="js-subscription-json"></code><br><br><br>
+          <h3>Endpoint URL:</h3>
+          <code class="js-endpoint-url"></code>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include script -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
