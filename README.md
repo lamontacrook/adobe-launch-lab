@@ -15,6 +15,13 @@
 11. [Create a Rule](#create-a-rule)
 12. [Publishing Workflow](#publishing-workflow)
 13. [Install Context Hub](#install-context-hub)
+14. [Publish to Staging](#publish-to-staging)
+15. [Validate the Changes in the Staging Library](#validate-the-changes-in-the-staging-library)
+16. [Setup Contact Us Rule](#setup-contact-us-rule)
+17. [Create an Analytics Trigger](#create_an_analytics_trigger)
+18. [Create & Upload Our Serverless Function](#create_&_upload_our_serverless_function)
+19. [Create the Integration Between the Event & the Action](#create_the_integration_between_the_event_&_the_Action)
+
 
 
 ## Setting Up the Environment
@@ -71,7 +78,7 @@ At the end of this lesson, you will be able to:
 
 A data layer can be anything.  It could be surfaced within HTML or within a JavaScript object.  The latter is the broadly accepted method for creating a data layer.  The W3C has [published a standard]( https://www.w3.org/2013/12/ceddl-201312.pdf) for building a data layer.  We will be using that standard for our exercise.  It is strongly advised to have a corporate standard.  
 
-1. Start the [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/related) and make sure you have selected the "victory" in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server") If you are using another environment…
+1. Start the [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/related) and make sure you have selected the "adobe_io/" folder in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server"). 
 
 2. Browse to http://127.0.0.1:8887 in your Chrome browser or the address of your local machine or webserver. You should see the home page. 
 
@@ -85,11 +92,9 @@ A data layer can be anything.  It could be surfaced within HTML or within a Java
 
 ![Repository](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/repo.png "Repository")
 
-5. [Need to validate remaining steps...  ] https://code.visualstudio.com/docs/editor/versioncontrol
+5. You should now have a project on the left-hand side with all the assets for this exercise.
 
-6. You should now have a project on the left-hand side with all the assets for this exercise.
-
-7. Once you have all the assets, open the victory folder and index.html.  This will open the page in an HTML editor. Copy the code block below.  We will be using this to begin to build our data layer.
+6. Once you have all the assets, open the adobe_io/victory/ folder and index.html.  This will open the page in an HTML editor. Copy the code block below.  We will be using this to begin to build our data layer.
 
 ```
 <script type="text/javascript">
@@ -113,15 +118,13 @@ A data layer can be anything.  It could be surfaced within HTML or within a Java
     };
 </script>
 ```
-8. This data layer is an inline JavaScript object.  In-line JavaScript can be included anywhere on this page.  This code snippet not only sets elements, but it also instantiates the data layer object (`digitalData`), so it will be important to have this as high on the page as possible.  Put this code just above the closing `</head>` tag.
+7. This data layer is an inline JavaScript object.  In-line JavaScript can be included anywhere on this page.  This code snippet not only sets elements, but it also instantiates the data layer object (`digitalData`), so it will be important to have this as high on the page as possible.  Put this code just above the closing `</head>` tag.
 
-9. Once you have pasted the data layer, you can begin by replacing the placeholder values with meaningful data.  For instance, for pageID: "[Friendly Page Name for Reporting]" let's update to reflect the actual name of the page.  Something like pageID: "Home Page" would work for this page.  Feel free update the other values as well.
+8. Once you have pasted the data layer, you can begin by replacing the placeholder values with meaningful data.  For instance, for pageID: "[Friendly Page Name for Reporting]" let's update to reflect the actual name of the page.  Something like pageID: "Home Page" would work for this page.  Feel free update the other values as well.
 
-10. Once you have completed this, let's move back to Chrome and to our Victory site.  Let's dDo a hard refresh of the page by hitting F5 or ctrl+refresh button  and open the Chrome Developer Tools by hitting F12 or….  In the developer tools, navigate to the Console section and type in the name of our data layer object "`digitalData"`. This will print out the JavaScript object that is part of the DOM on the page.  You should see the same values that you created when tagging the page.
+9. Once you have completed this, let's move back to Chrome and to our Victory site.  Let's do a hard refresh of the page by hitting F5 or ctrl+refresh button  and open the Chrome Developer Tools by hitting F12 or….  In the developer tools, navigate to the Console section and type in the name of our data layer object "`digitalData"`. This will print out the JavaScript object that is part of the DOM on the page.  You should see the same values that you created when tagging the page.
 
 ![Dev Tools](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/dev_tools.png "Dev Tools")  
-
-11. As time allows please feel free to tag other pages using the same method.
 
 #### Resources:
 * https://theblog.adobe.com/data-layers-buzzword-best-practice/
@@ -205,6 +208,8 @@ The embed code should be implemented in the `<head>` element of all HTML pages t
 
 <!--/Launch Header Embed Code-->
 ```
+
+__Note:__ Use the embed code from your property and not the example above.
 
 Open your web browser’s developer tools and go to the Network tab. At this point, you should see a 404 error for the Launch environment URL:
 
@@ -296,6 +301,7 @@ The Extensions page provides three views:
 Click Extensions to see all your installed extensions. You can also use the catalog to see a list of all available extensions and which extensions have updates available.
 
 ## Add a new extension
+
 Launch is highly extendible. Extensions add core functionality to Launch.
 
 A common use of extensions is to create integrations with other applications. In the previous version of Launch, known as Dynamic Tag Management, extensions were called tools.
@@ -357,13 +363,14 @@ Use the following steps to create a rule that outputs the Page Name data element
 ![Create Rule](/images/L780_image15.png "Create Rule")
 
 3. Name the Rule (for example, "All Pages - Library Loaded"). This name uses a convention that indicates where and when the rule will fire, which makes it easier to identify and reuse as your Launch property matures.
+
 4. Under Events, click __Add__.
 
 ![Add Rule](/images/L780_image16.png "Add Rule")
 
 The Event tells Launch when the rule should fire and can be many things, including a page load, a click, a custom JavaScript event, and so on.
 
-5. As the Event Type, select __Library Loaded (Page Top)__. When you select the Event Type, Launch pre-populates a name for the event using your selection. The default order for the event is 50. Ordering is a powerful feature in Launch that gives you precise control over the sequence of actions when multiple rules are triggered by the same event. This feature is used later in the tutorial.
+5. As the Event Type, select __Library Loaded (Page Bottom)__. When you select the Event Type, Launch pre-populates a name for the event using your selection. The default order for the event is 50. Ordering is a powerful feature in Launch that gives you precise control over the sequence of actions when multiple rules are triggered by the same event. This feature is used later in the tutorial.
 6. Click __Keep Changes__.
 
 ![Keep Changes](/images/L780_image17.png "Keep Changes")
@@ -552,7 +559,7 @@ Once the green-dot icon appears, the library can be previewed in the Staging env
 
 In a real-life scenario, the next step in the process would typically be to have your QA team validate the changes in the Staging library. They can do this using the Debugger.
 
-## Validate the changes in the Staging library
+## Validate the Changes in the Staging Library
 
 1. In your Launch property, open the Environments page.
 
@@ -590,7 +597,39 @@ In real life, once your QA team has signed off by reviewing the changes in the S
 
 ![36](/images/L780_image36.png)
 
+## Setup Contact Us Rule
 
+Using the step above add a data layer and Launch embed code to the contact.html
+
+1. Create a new rule within your property.  Name this property __Form Submit__.
+
+2. Within the configuration you want to select __Core__ extension and an __Event Type__ of __Click__.  On the right configuration section type __.btn__ within the __Elements matching the CSS selector__.  This will tell Launch to fire this rule when the button is clicked. Click __Keep Changes__.  
+
+__Note:__ There are several different ways to approach a form submit event.  If the form had some JavaScript validation, you could tie the event to the form submit event.
+
+![Event Configuration](/images/event_configuration.png)
+
+3. After saving, click __Actions__ and choose the __Adobe Analytics__ extension and __Action Type__ of __Set Variables__.
+
+4. Choose a custom event from the __Events__ section.  Custom events begin with `event1` and increment by 1.  Let's make this a unique event by developer.
+
+5. Set the __Page Name__ variable to the page name data element and click __Keep Changes__.
+
+![Action Configuration](/images/action_configuration.png)
+
+__Note:__ An Analytics event is fundamentally in integer inside of Adobe Analytics.  It increments by 1 unless it is a numeric event that can increment by any preset amount.  Revenue on and eCommerce site is a numberic event.  For us, we will use this event within our setup of Analytics Triggers.
+
+6. Create an New Action Configuration that sends the Analytics beacon.
+
+![Send Beacon](/images/send_beacon.png)
+
+## Create an Analytics Trigger
+
+An Analytics Trigger is an Adobe I/O specially designed to listen for predifined variables and to trigger based on a state.  A trigger can be defined based on an action happening, and abandonment such as a cart, or a session beginning or ending.  For this exercise we will choose __Actions__ under __New Triggers__ dialogue.
+
+## Create & Upload Our Serverless Function
+
+## Create the Integration Between the Event & the Action
 
 <!--
 
