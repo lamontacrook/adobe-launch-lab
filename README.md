@@ -83,7 +83,7 @@ A data layer can be anything.  It could be surfaced within HTML or within a Java
 
 1. Start the [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/related) and make sure you have selected the "adobe_io/" folder in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server"). 
 
-2. Browse to http://127.0.0.1:8887 in your Chrome browser or the address of your local machine or webserver. You should see the home page and select Victory from the menu. 
+2. Browse to http://127.0.0.1:8887/victory/index.html in your Chrome browser or the address of your local machine or webserver. You should see the home page and select Victory from the menu. 
 
 ![Victory Home Page](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/home_page.png "Victory Home Page")
 
@@ -361,7 +361,7 @@ Use the following steps to create a rule that outputs the Page Name data element
 
 ![Create Rule](/images/L780_image15.png "Create Rule")
 
-3. Name the Rule (for example, "All Pages - Library Loaded"). This name uses a convention that indicates where and when the rule will fire, which makes it easier to identify and reuse as your Launch property matures.
+3. Name the Rule (for example, "All Pages - Page Bottom"). This name uses a convention that indicates where and when the rule will fire, which makes it easier to identify and reuse as your Launch property matures.
 
 4. Under Events, click __Add__.
 
@@ -439,7 +439,7 @@ When you are making a lot of changes in Launch, it is inconvenient to have to op
 1. Make a small change to the All Pages - Library Loaded rule.
 2. In the top navigation, click Rules and then click on the All Pages - Library Loaded rule to open it.
 
-![24](/images/L780_images24.png)​
+![24](/images/L780_image24.png)​
 
 3. On the Edit Rule page, click the Select an option dropdown to show the Working Library options. Select your Initial Setup library.
 
@@ -532,11 +532,37 @@ __Note:__ The object above is the same object from the earlier exercise without 
 
 3. Select __Data Element Type__ to __Context Hub__.
 
-4. Select `page.pageInfo` in __Data item__.
+4. Select `page.pageInfo.pageID` in __Data item__.
 
 ![Edit Data Element](/images/pageName.png)
 
 5. Click __Save to Build Library__.
+
+### Setup Analytics Tracking
+
+1. Navigate back into the rule and into the __Action Configuration__.
+
+2. Select the __Adobe Analytics__ from the __Extensions__ dropdown.
+
+3. Select __Set Variables__ from the __Action Type__ dropdown.
+
+![Set Variables](/images/set_variables.png)
+
+4. Add the __Page Name__ data element into the Page Name section of the variable configuration.
+
+5. Click __Keep Changes__.
+
+6. Add another action to action configuration.
+
+7. Select the __Adobe Analytics__ from the __Extensions__ dropdown.
+
+8. Select __Send Beacon__ from the __Action Type__ dropdown and `s.t()` within the configurations screen.
+
+![Send Beacon](/images/send_beacon_st.png)
+
+9. Click __Keep Changes__.
+
+10. Build the Library.
 
 ## Publish to Staging
 
@@ -632,9 +658,101 @@ An Analytics Trigger is an Adobe I/O specially designed to listen for predifined
 
 2. Choose __Adobe IO Lab__ report suite.
 
+3. From the events menu select a unique event from the list and drag it to the the __Visit Must include__ section.  The the definition should be event X exists.
+
+4. In the __Include Meta Data__ add __Page Name__.
+
 ## Create & Upload Our Serverless Function
 
+We will be using the OpenWhisk CLI to work with Adobe IO Runtime.  You can verify if you have OpenWhisk install and in your path by typing in `wsk -h` in the terminal.
+
+1. In the terminal, move to the /src directory.  We will be using the main.js for this portion of our project.  Open the file and you will see that its a very simple class that uses a module to send a web push message.  You can run it by typing in `node main.js`.
+
+2. Let's edit this file for uploading to Runtime.  Find the following lines:
+
+```
+//test code
+let args = {message: "hello"}; 
+main(args);
+```
+
+Comment these lines out.  They are unecessary except for testing the code.
+
+3. In order to authenticate using OpenWhisk, copy the wskprop.txt to your home directory and name .wskprops.  From the terminal you can do this by typing:
+
+```
+cp wskprops.txt ~/.wskprops
+```
+
+To validate this step you should be able to type in `wsk list` and see:
+
+```
+$ wsk list
+Entities in namespace: worshop-ace
+packages
+actions
+triggers
+rules
+```
+
+3. To use this function in Runtime we will need the node_modules as well as the main.js.  Zip together the following files and folders:
+
+    * /node_modules
+    * main.js
+    * package.json
+
+Name the new zip file push[Your Name].zip
+
+3. Type the following command into your terminal to create an action from this function:
+
+wsk action create push[Your Name] --kind nodejs:10 push[Your Name].zip
+
+4. To invoke this action on Runtime you can run the following command:
+
+```
+wsk action invoke --result push[Your Name] --param message <your name>
+```
+
 ## Create the Integration Between the Event & the Action
+
+Now that we have our Runtime action and our Analytics Trigger created we need to point the Trigger to the Action.  We will you the I/O Console to faciliate this. Adobe I/O Console gives you access to APIs, SDKs and developer tools to build on, integrate, and extend Adobe products. 
+
+1. Navigate to https://console.adobe.io/home and click on __Create Integration__.
+
+2. Choose __Receive near-real time events__ and click __Continue__.
+
+![Create Integration](/images/create_integration.png)
+
+3. Choose __Analytics Triggers__ and click __Continue__.
+
+![Analytics Trigger](/images/IO_event_integration.png)
+
+4. Create a private key from the terminal.
+
+```
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout private.key -out certificate_pub.crt
+```
+
+This will give you two files.  For more in on certificates for Adobe I/O.
+
+https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/JWT/JWTCertificate.md
+
+![Public Key](/images/public_key.png)
+
+5. Let's now register our IO action.  From the terminal run `wsk action get push[Your Name] --url`.  This will give us the http endpoint that we can use to invoke our action. Copy the URL and paste into the form.
+
+![Web Hook](/images/add_webhook.png)
+
+6. Click __Send sample event__.
+
+7. Click __Save__.  
+
+At this point you should be able to complete you Contact Us form and hit __Send Message__.  That will trigger and Analytics Trigger which will use this new Integration to send you a push message.
+
+
+
+
+
 
 <!--
 

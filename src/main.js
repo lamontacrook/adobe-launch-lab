@@ -15,10 +15,10 @@ class PushMessage {
             TTL: 60,
         }
 
-        let msg = args;
+        let msg = args.message;
         if(args.event)
         {
-            msg = args.event["com.adobe.mcloud.pipeline.pipelineMessage"]["com.adobe.mcloud.protocol.trigger"].enrichments.analyticsHitSummary.dimensions.eVar1.data[0];
+            msg = args.event["com.adobe.mcloud.pipeline.pipelineMessage"]["com.adobe.mcloud.protocol.trigger"].enrichments.analyticsHitSummary.dimensions.pageName.data[0];
         }
         this.payload = `Thank you for submitting the ${msg} form.`;
     }
@@ -50,7 +50,7 @@ function main(args) {
 }
 
 //test code
-let args = "hello"; 
+let args = {message: "hello"}; 
 main(args);
 
 exports.main = main;
