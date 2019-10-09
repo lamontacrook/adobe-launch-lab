@@ -37,9 +37,10 @@ In order to work with Adobe, Launch and learn the basics of Tag Management and c
 
 You will also need a webserver to run the websites on either remote or locally (such as through IIS or Apache).  If you don't have a local webserver running on your machine I would recommend this [Chrome extension](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).  This will allow you to browse to these local websites using your browser.  You can certainly use whatever webserver you would like as long as you can edit and change the HTML of the files.
 
-Within this  repository, you should find two directories, [/victory](https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory) and [/apex-app](https://github.com/lamontacrook/adobe-launch-lab/tree/master/victory/apex-app).  These directories are the sample websites that we will be tagging.  If you are using [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) you will need to select these directories as we go through the labs.
+Within this  repository, you should find the directory, [/adobe_io](https://github.com/lamontacrook/adobe-launch-lab/tree/master/adobe_io).  This directory contain webpages that we will be tagging.  If you are using [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) you will need to select this directory as we go through the labs.
 
 Since we will be editing HTML, you will want to have an integrated development environment (IDE) installed on your computer.  I use Visual Studio Code which you can find [here](https://code.visualstudio.com/). Other options include [NotePad++](https://notepad-plus-plus.org/downloads/) or [Eclipse](https://www.eclipse.org/downloads/).
+
 For debugging purposes, we will install two tools.  First, ensure that you have [Chrome developer tools](https://developers.google.com/web/tools/chrome-devtools) installed.  Additionally, install the [Experience Cloud Debugger](https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj?hl=en).  We will be using this to debug the Experience Cloud products.
 
 For the I/O Runtime exercise, you will need to ensure you have [node.js](https://nodejs.org/en/download/) installed and aio.  To install aio, after you have installed node.js run the following command in the terminal.  
@@ -48,7 +49,9 @@ For the I/O Runtime exercise, you will need to ensure you have [node.js](https:/
 npm install -g @adobe/aio-cli
 ```
 
-AIO will install openwhisk.  Verify that openwhisk is in your path by typing in `wsk -h` from the terminal.  
+AIO will install OpenWhisk CLI.  Verify that OpenWhisk is in your path by typing in `wsk -h` from the terminal. 
+
+Alternatively, OpenWhisk can be installed outlined in this documentation - https://adobedocs.github.io/adobeio-runtime/tools/wsk_install.html.
 
 ## Lesson Overview
 
@@ -80,7 +83,7 @@ A data layer can be anything.  It could be surfaced within HTML or within a Java
 
 1. Start the [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/related) and make sure you have selected the "adobe_io/" folder in the setup window. ![Chrome Web Server](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/200Ok.png "Chrome Web Server"). 
 
-2. Browse to http://127.0.0.1:8887 in your Chrome browser or the address of your local machine or webserver. You should see the home page. 
+2. Browse to http://127.0.0.1:8887 in your Chrome browser or the address of your local machine or webserver. You should see the home page and select Victory from the menu. 
 
 ![Victory Home Page](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/home_page.png "Victory Home Page")
 
@@ -333,11 +336,7 @@ The Analytics extension consists of two main parts:
 
 1. Go to __Extensions > Catalog__ and locate the Adobe Analytics extension.
 2. Click __Install__.
-3. Under __Library Management > Report Suites__, enter the report suite IDs you want to use with each Launch environment.
-
-In this lab, you can use one report suite for all environments, but in production you would want to use separate report suites, as shown in the image below:
-
-![Report Suite Configuration](https://github.com/lamontacrook/adobe-launch-lab/blob/master/images/L780_image12.png "Report Suite Configuration")
+3. Under __Library Management > Report Suites__, enter the report suite IDs you want to use with each Launch environment.  For this exercise we are using zgeo1xxpnw.adobe.io.lab.
 
 __Note:__ Use the Manage the library for me option as the Library Management setting. This makes it much easier to keep the core AppMeasurement.js code up-to-date.
 
@@ -627,6 +626,12 @@ __Note:__ An Analytics event is fundamentally in integer inside of Adobe Analyti
 
 An Analytics Trigger is an Adobe I/O specially designed to listen for predifined variables and to trigger based on a state.  A trigger can be defined based on an action happening, and abandonment such as a cart, or a session beginning or ending.  For this exercise we will choose __Actions__ under __New Triggers__ dialogue.
 
+1. Navigate to [Launch](https://activation.adobe.com) home page and choose Triggers.
+
+![Triggers](/images/triggers.png)
+
+2. Choose __Adobe IO Lab__ report suite.
+
 ## Create & Upload Our Serverless Function
 
 ## Create the Integration Between the Event & the Action
@@ -638,6 +643,6 @@ Trigger something??
 Browse abandon ...
 Action ...
 REACT ... 
-
+zgeo1xxpnw.adobe.io.lab
 -->
 

@@ -1,0 +1,3 @@
+APIHOST=https://adobeioruntime.net
+NAMESPACE=worshop-ace
+AUTH=6edd63fe-9cef-46e0-9d63-fe9cef46e061:q2Q6mZ8ZWRL8kjL8WFJZ6JLPAb9rOZFjx5u0csnruxaEenDZ1tiEZQ0NzeAY0RHX
