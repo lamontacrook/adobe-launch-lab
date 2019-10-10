@@ -1,4 +1,4 @@
-# Adobe Launch Lab
+# Adobe I/O and Launch Lab
 
 ## Table of Contents
 1. [Setting Up the Environment](#setup-up-the-environment)
@@ -20,7 +20,7 @@
 16. [Setup Contact Us Rule](#setup-contact-us-rule)
 17. [Create an Analytics Trigger](#create_an_analytics_trigger)
 18. [Create & Upload Our Serverless Function](#create_&_upload_our_serverless_function)
-19. [Create the Integration Between the Event & the Action](#create_the_integration_between_the_event_&_the_Action)
+19. [Create the Integration Between the Event & the Action](#create_the_integration_between_the_event_&_the_action)
 
 
 
