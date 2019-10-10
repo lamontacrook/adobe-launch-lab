@@ -638,7 +638,7 @@ __Note:__ There are several different ways to approach a form submit event.  If 
 
 4. Choose a custom event from the __Events__ section.  Custom events begin with `event1` and increment by 1.  Let's make this a unique event by developer.
 
-5. Set the __Page Name__ variable to the page name data element and click __Keep Changes__.
+5. Set the __Page Name__ variable and __eVar1__ variable to the page name data element and click __Keep Changes__.
 
 ![Action Configuration](/images/action_configuration.png)
 
@@ -658,15 +658,25 @@ An Analytics Trigger is an Adobe I/O specially designed to listen for predifined
 
 2. Choose __Adobe IO Lab__ report suite.
 
-3. From the events menu select a unique event from the list and drag it to the the __Visit Must include__ section.  The the definition should be event X exists.
+3. From the events menu select a unique event from the list and drag it to the the __Visit Must include__ section.  The definition should be event X exists.
 
-4. In the __Include Meta Data__ add __Page Name__.
+4. In the __Include Meta Data__ add __Form Name__.
 
 ## Create & Upload Our Serverless Function
 
 We will be using the OpenWhisk CLI to work with Adobe IO Runtime.  You can verify if you have OpenWhisk install and in your path by typing in `wsk -h` in the terminal.
 
-1. In the terminal, move to the /src directory.  We will be using the main.js for this portion of our project.  Open the file and you will see that its a very simple class that uses a module to send a web push message.  You can run it by typing in `node main.js`.
+1. In the terminal, move to the /src directory.  We will be using the main.js for this portion of our project.  Open the file and you will see that its a very simple class that uses a module to send a web push message.  This file current contains an endpoint that will generate a push message on my computer.  The enable it to run on yours browse to the root of your locally hosted website.  Accept the prompt to receive notifications. Click the button to __Enable Push Messaging__. You will see a subscription object that you can copy to your clickboard.
+
+![Push Message](/images/push_setup.png)
+
+2. Paste the copied object to your main.js.
+
+![Subscription](/images/subscription.png)
+
+Now you can run this code by typing in `node main.js` into your terminal.
+
+![Notification](/images/notification.png)
 
 2. Let's edit this file for uploading to Runtime.  Find the following lines:
 
@@ -705,12 +715,20 @@ Name the new zip file push[Your Name].zip
 
 3. Type the following command into your terminal to create an action from this function:
 
-wsk action create push[Your Name] --kind nodejs:10 push[Your Name].zip
+```
+wsk action create push[Your Name] --kind nodejs:10 push[Your Name].zip --web true
+```
 
 4. To invoke this action on Runtime you can run the following command:
 
 ```
 wsk action invoke --result push[Your Name] --param message <your name>
+```
+
+5. We can also access this action from your browser.  Use the command `wsk action get push[Your Name] --url' to get the url for your action.  You can now invoke this action by putting the returned url and the parameter into your browser.
+
+```
+https://adobeioruntime.net/api/v1/web/worshop-ace/default/push[Your Name]?message=[your message]
 ```
 
 ## Create the Integration Between the Event & the Action

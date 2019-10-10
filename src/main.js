@@ -18,7 +18,7 @@ class PushMessage {
         let msg = args.message;
         if(args.event)
         {
-            msg = args.event["com.adobe.mcloud.pipeline.pipelineMessage"]["com.adobe.mcloud.protocol.trigger"].enrichments.analyticsHitSummary.dimensions.pageName.data[0];
+            msg = args.event["com.adobe.mcloud.pipeline.pipelineMessage"]["com.adobe.mcloud.protocol.trigger"].enrichments.analyticsHitSummary.dimensions.eVar1.data[0];
         }
         this.payload = `Thank you for submitting the ${msg} form.`;
     }
@@ -28,15 +28,12 @@ class PushMessage {
             this.subscriptionObj,
             this.payload,
             this.options
-        );
+        );      
     }
     
 }
 
 function main(args) {
-
-    var p = new PushMessage(args);
-
 
     if (args && args.challenge) {
         return {
@@ -45,7 +42,7 @@ function main(args) {
         };
     }
 
-    
+    var p = new PushMessage(args);    
     p.pushMessage();
 }
 
