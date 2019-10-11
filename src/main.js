@@ -3,11 +3,7 @@ const webPush = require('web-push');
 class PushMessage {
     constructor(args) {
         this.subscriptionObj = {
-            "endpoint":"https://fcm.googleapis.com/fcm/send/dfQnqiaqBHA:APA91bFMo7arW1vz93yLPT4YxjOQb8xF_e2O4cxe1bn6YT-8qdleszeE6R90Sj0nfVa3Sw9Fo-YicleaegrU5kIrkpnV4pIu3MedniP7qQKXFvKEzVaLknzjHgP5SqeYuDiP4Uo2D4GJ",
-            "expirationTime":null,
-            "keys":{
-                "p256dh":"BA9FGUChGciJxXjl5ZcbEoCFn6DQzABAopISH9L47IOxv9Y4IH2S6GmBGBkbaHQRYx1QYm2apKnHRRIMG4Tqx6g","auth":"Ne--zk9VyOdPmq3uvfKgZg"
-            }
+            //your subscription object
         }
 
         this.options = {
