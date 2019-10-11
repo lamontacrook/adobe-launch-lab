@@ -23,7 +23,6 @@
 19. [Create the Integration Between the Event & the Action](#create_the_integration_between_the_event_&_the_action)
 
 
-
 ## Setting Up the Environment
 
 At the end of this lesson, you will:
